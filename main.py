@@ -3,10 +3,10 @@ import os,json, sys
 import numpy as np
 # single gpu    
 
-os.system('nvidia-smi -q -d Memory | grep -A5 GPU | grep Free > tmp.txt')
-memory_gpu = [int(x.split()[2]) for x in open('tmp.txt', 'r').readlines()]
-os.environ["CUDA_VISIBLE_DEVICES"] = str(np.argmax(memory_gpu)) 
-os.system('rm tmp.txt')
+# os.system('nvidia-smi -q -d Memory | grep -A5 GPU | grep Free > tmp.txt')
+# memory_gpu = [int(x.split()[2]) for x in open('tmp.txt', 'r').readlines()]
+# os.environ["CUDA_VISIBLE_DEVICES"] = str(np.argmax(memory_gpu)) 
+# os.system('rm tmp.txt')
 
 import torch
 import utils

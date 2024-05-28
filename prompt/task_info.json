@@ -1,10 +1,16 @@
 {
-    "simpledoorkey":{
-        "episode": 100,
+    "simpledoorkey": {
+        "episode": 10,
         "level": "easy",
-        "description": "an agent in a minigrid environment in reinfrocement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and statu: carry {object} or none. Availabel actions may includes: explore, go to {object}, pick up {object}, toggle {object}. the actions should be displayed in a list. Do not explain the reasoning. \n ",
-        "example": "observation: {observed nothing}, action: {explore}. \n observation: {observed a door}, action: {explore}. \n observation: {observed a key, observed a door}, action: {go to the key, pick up the key, go to the door, toggle the door}. \n observation: {observed a door, carry key}, action: {go to the door, toggle the door}. \n observation: {observed a key}, action: {go to the key, pick up the key, explore}.",
-        "configurations": "MiniGrid-SimpleDoorKey-Min5-Max10-View3" 
+        "description": "You have an agent in a minigrid environment in reinforcement learning. The task of the agent is to toggle the door in the maze with a key. Based on the current observations and the agent's status (carrying an object or none), provide the next action for the agent. The action must be one of the following: explore, go to {object}, pick up {object}, toggle {object}. Respond only with the selected action in the format actionselected: {action}.",
+        "example": [
+            "observation: {observed nothing}, action: actionselected: explore",
+            "observation: {observed a door}, action: actionselected: explore",
+            "observation: {observed a key, observed a door}, action: actionselected: go to the key, pick up the key, go to the door, toggle the door",
+            "observation: {observed a door, carry key}, action: actionselected: go to the door, toggle the door",
+            "observation: {observed a key}, action: actionselected: go to the key, pick up the key, explore"
+        ],
+        "configurations": "MiniGrid-SimpleDoorKey-Min5-Max10-View3"
     },
 
     "keyinbox":{
