@@ -180,7 +180,8 @@ class Base_Planner(ABC):
         if self.llm_model is None:
             raise ValueError("No Large Language Model selected")
         
-        example_str = "\n".join(example)
+        example_str = "\n".join(f"Observation: {ex['observation']}, Action: {ex['action']}" for ex in example)
+
         prompts = description + "\n" + example_str
         
         self.dialogue_system += description + "\n"
@@ -212,51 +213,35 @@ class Base_Planner(ABC):
                 print(e)
 
     def query_codex(self, prompt_text):
-        server_flag = 0
-        server_error_cnt = 0
-        result = None
-        while server_error_cnt < 10:
+        headers = {'Content-Type': 'application/json', 'Authorization': f'Bearer {openai.api_key}'}
+        data = {'model': self.llm_model, "messages": [{"role": "user", "content": prompt_text}]}
+
+        result = None  # Initialize result to None to handle cases where no API response meets the condition
+        for _ in range(10):  # Retry up to 10 times
             try:
-                url = self.llm_url
-                headers = {
-                    'Content-Type': 'application/json',
-                    'Authorization': f'Bearer ' + openai.api_key
-                }
-                
-                data = {
-                    'model': self.llm_model,
-                    "messages": [{"role": "user", "content": prompt_text}]
-                }
-                response = requests.post(url, headers=headers, json=data)
-                
+                response = requests.post(self.llm_url, headers=headers, json=data)
                 if response.status_code == 200:
-                    result = response.json()
-                    server_flag = 1
-                    if server_flag:
-                        break
-                    
+                    result = response.json()['choices'][0]['message']['content']  # Assuming structure of the API response
+                    break  # Exit the loop if successful
             except Exception as e:
-                server_error_cnt += 1
-                print(e)
-        if result is None:
-            return None
-        else:
-            return result['choices'][0]['message']['content']
+                print(f"Server error, retrying... ({e})")
+
+        return result
 
     def check_plan_isValid(self, plan):
-        if plan.startswith("actionselected: {") and plan.endswith("}"):
-            valid_actions = ["explore", "go to the key", "pick up the key", "go to the door", "toggle the door"]
-            for action in valid_actions:
-                if action in plan:
-                    return True
-        return False
-
+        if "{" in plan and "}" in plan:
+            return True
+        else:
+            print(f"Generated Plan: {plan}")
+            return False
+        
     def step_planning(self, text):
+        ## seed for LLM and get feedback
         plan = self.query_codex(text)
         if plan is not None:
+            ## check Valid, llm may give wrong answer
             while not self.check_plan_isValid(plan):
-                print(f"Generated Plan: {plan}")
-                print(f"{plan} is an illegal Plan! Replan ...\n")
+                print(f"{plan} is an illegal Plan! Replanning...")
                 plan = self.query_codex(text)
         return plan
 
@@ -288,14 +273,17 @@ class SimpleDoorKey_Planner(Base_Planner):
 
     def forward(self, obs):
         text = self.mediator.RL2LLM(obs)
+        print(f"RL2LLM: {text}")
         plan = self.step_planning(text)
         
         self.dialogue_logger += text
         self.dialogue_logger += plan
-        self.dialogue_user = text + "\n"
+        self.dialogue_user = text +"\n"
         self.dialogue_user += plan
         if self.show_dialogue:
-            print(self.dialogue_system)
+            print(self.dialogue_user)
+        skill = self.mediator.LLM2RL(plan)
+        return skill
    
 class KeyInBox_Planner(Base_Planner):
     def __init__(self,seed=0):
