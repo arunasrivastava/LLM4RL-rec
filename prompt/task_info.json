@@ -2,8 +2,8 @@
     "simpledoorkey": {
         "episode": 10,
         "level": "easy",
-        "description": "an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and statu. carry {object} or none. Availabel actions may includes: explore, go to {object), pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.\n Example:\n Q: observation: {observed a key, observed a door}.\n A: action: {go to the key, pick up the key, go to the door, toggle the door}.",
-        "example":"observation: {observed nothing}, action. {explore}. \n observation: {observed a door}, action: {explore}. \n  observation: {observed a key, observed a door}, action: {go to the key, pick up the key, go to the door, toggle the door} . \n  observation: {observed a door, carry key}, action: {go to the door, toggle the door). \n observation: {observed a key}, action: {go to the key, pick up the key, explore} ",
+        "description": "an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and statu. carry {object} or none. Availabel actions may includes: explore, go to {object), pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.\n",
+        "example":"Example:\n Q: observation: {observed a key, observed a door}.\n A: action: {go to the key, pick up the key, go to the door, toggle the door}.",
         "configurations": "MiniGrid-SimpleDoorKey-Min5-Max10-View3"
     },
 
