@@ -20,7 +20,7 @@ from abc import ABC, abstractmethod
 
 # python3 main.py train --task SimpleDoorKey --save_name experiment01 
 # Set your OpenAI API key
-openai.api_key = 'sk-proj-yoQbeSfLj9iHkVDuE69qT3BlbkFJm0IDdQPESomJRtjqgf2I'  # TODO: Replace with your actual OpenAI API key
+openai.api_key = ''  # TODO: Replace with your actual OpenAI API key
 
 class Base_Planner(ABC):
     """The base class for Planner."""
