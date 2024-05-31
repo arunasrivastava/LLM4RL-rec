@@ -133,6 +133,7 @@ class Base_Mediator(ABC):
         self.obj_coordinate = {}
 
 class SimpleDoorKey_Mediator(Base_Mediator):
+    task_description = ""
     def __init__(self, ):
         super().__init__()
 
@@ -179,7 +180,14 @@ class SimpleDoorKey_Mediator(Base_Mediator):
             if context != "":
                 context += ", "
             context += f"carry {carry_object}"
-        context = f"observation: {{{context}}} "
+        
+
+        context = f"""\"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {{object}} or none. Available actions may include: explore, go to {{object}}, pick up {{object}}, toggle {{object}}. The actions should be displayed in a list. Please keep the format with {{}} and do not explain the reasoning.
+        Example:
+        Q: observation: {{observed a key, observed a door}}.
+        A: action: {{go to the key, pick up the key, go to the door, toggle the door}}.\""" Q: observation: \"\" {{{context}}} """
+
+        
         return context
     
     def parser(self, text):

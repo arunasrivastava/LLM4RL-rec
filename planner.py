@@ -31,7 +31,7 @@ class Base_Planner(ABC):
         self.dialogue_user = ''
         self.dialogue_logger = ''         
         self.show_dialogue = False
-        self.llm_model = "gpt-3.5-turbo"
+        self.llm_model = "gpt-4"
         self.llm_url = 'https://api.openai.com/v1/chat/completions'
     def reset(self, show=False):
         self.dialogue_user = ''
@@ -105,6 +105,7 @@ class Base_Planner(ABC):
             return result['choices'][0]['message']['content']
 
     def check_plan_isValid(self, plan):
+        # print(f"bruh the plan {plan}")
         if "{" in plan and "}" in plan:
             return True
         else:
@@ -150,6 +151,7 @@ class SimpleDoorKey_Planner(Base_Planner):
        
     def forward(self, obs):
         text = self.mediator.RL2LLM(obs)
+        # print(f"THIS IS WHAT I SAW:{text}")
         # print(text)
         plan = self.step_planning(text)
         
