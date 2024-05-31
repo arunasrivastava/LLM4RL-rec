@@ -215,7 +215,7 @@ class SimpleDoorKey_Mediator(Base_Mediator):
     
     
     def LLM2RL(self, plan):
-
+        print(f"PRINTING PLAN LLM2RL {plan}")
         plan = re.findall(r'{(.*?)}', plan)
         lines = plan[0].split(',')
         skill_list = []
@@ -227,6 +227,8 @@ class SimpleDoorKey_Mediator(Base_Mediator):
             goal["object"] = object
             goal["coordinate"] = coordinate
             skill_list.append(goal)
+
+        print(f"PRINTING PLAN LLM2RL skill {skill_list}")
         return skill_list
     
 class KeyInBox_Mediator(Base_Mediator):

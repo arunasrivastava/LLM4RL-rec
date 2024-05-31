@@ -19,7 +19,7 @@ def setup_seed(seed):
 
 
 if __name__ == "__main__":
-    utils.print_logo(subtitle="Maintained by Research Center for Applied Mathematics and Machine Intelligence, Zhejiang Lab")
+    # utils.print_logo(subtitle="Maintained by Research Center for Applied Mathematics and Machine Intelligence, Zhejiang Lab")
     parser = argparse.ArgumentParser()
     parser.add_argument("--task", type=str, default="SimpleDoorKey", help="SimpleDoorKey, KeyInBox, RandomBoxKey, ColoredDoorKey") 
     parser.add_argument("--save_name", type=str, required=True, help="path to folder containing policy and run details")

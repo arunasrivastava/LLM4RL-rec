@@ -20,7 +20,7 @@ from abc import ABC, abstractmethod
 
 # python3 main.py train --task SimpleDoorKey --save_name experiment01 
 # Set your OpenAI API key
-openai.api_key = ''  # TODO: Replace with your actual OpenAI API key
+openai.api_key = 'sk-proj-yoQbeSfLj9iHkVDuE69qT3BlbkFJm0IDdQPESomJRtjqgf2I'  # TODO: Replace with your actual OpenAI API key
 
 class Base_Planner(ABC):
     """The base class for Planner."""
@@ -41,32 +41,47 @@ class Base_Planner(ABC):
     ## initial prompt, write in 'prompt/task_info.json
     def initial_planning(self, decription, example):
         if self.llm_model is None:
-            assert "no select Large Language Model"
+            raise AssertionError("No selected Large Language Model")
         prompts = decription + example
         self.dialogue_system += decription + "\n"
         self.dialogue_system += example + "\n"
-
         ## set system part
         server_error_cnt = 0
-        while server_error_cnt<10:
+        print("HI, aruna")
+        server_flag = 0
+        print("BYE, aruna")
+        while server_error_cnt < 10:
+            print(server_error_cnt, ": is the aruna")
             try:
+                print("andy1")
                 url = self.llm_url
-                headers = {'Content-Type': 'application/json'}
-                
-                data = {'model': self.llm_model, "messages":[{"role": "system", "content": prompts}]}
+                print("andy2")
+                headers = {
+                    'Content-Type': 'application/json',
+                    'Authorization': f'Bearer {openai.api_key}'  # Ensure the API key is correctly included
+                }
+                print("andy3")
+                data = {'model': self.llm_model, "messages": [{"role": "system", "content": prompts}]}
+                print("andy4")
                 response = requests.post(url, headers=headers, json=data)
-                
+                print("andy5 - the code is : ", response.status_code)
                 if response.status_code == 200:
-                    result = response.json()                    
-                    server_flag = 1
-                                
-                   
+                    print("andy 6")
+                    result = response.json()
+                    print("andy 7")
+                    if 'choices' in result and len(result['choices']) > 0:
+                        print("andy 8")
+                        server_flag = 1  # Set server_flag to 1 if the response is valid
+                print("andy 9")
                 if server_flag:
                     break
-                    
             except Exception as e:
+                print("aruna is wrong")
                 server_error_cnt += 1
-                print(e)    
+                print(f"Initial Planning Error: {e}")
+        if not server_flag:
+            print("Failed to get a valid response from the server after 10 attempts.")
+        print("aruna may be right")  
 
     def query_codex(self, prompt_text):
         server_flag = 0
@@ -88,7 +103,7 @@ class Base_Planner(ABC):
                 
                 
 
-                if response.status_code == 200:
+                if response.status_code == 401:
                     result = response.json()                    
                     server_flag = 1
                                 
@@ -104,7 +119,7 @@ class Base_Planner(ABC):
         else:
             return result['choices'][0]['message']['content']
 
-    def check_plan_isValid(self, plan):
+    def check_plan_isValid(self, plan): 
         if "{" in plan and "}" in plan:
             return True
         else:
@@ -113,6 +128,7 @@ class Base_Planner(ABC):
     def step_planning(self, text):
         ## seed for LLM and get feedback
         plan = self.query_codex(text)
+        # print(f"LLM Planing: {plan}")
         if plan is not None:
             ## check Valid, llm may give wrong answer
             while not self.check_plan_isValid(plan):
