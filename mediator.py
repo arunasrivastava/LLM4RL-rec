@@ -319,6 +319,7 @@ class KeyInBox_Mediator(Base_Mediator):
                 coordinate = None
         except:
             print("Unknown Planning :", text)
+            coordinate = None
             act = 6 # do nothing
         return act, obj, coordinate
     
