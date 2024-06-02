@@ -31,7 +31,7 @@ class Base_Planner(ABC):
         self.dialogue_user = ''
         self.dialogue_logger = ''         
         self.show_dialogue = False
-        self.llm_model = "gpt-4"
+        self.llm_model = "gpt-3.5-turbo"
         self.llm_url = 'https://api.openai.com/v1/chat/completions'
     def reset(self, show=False):
         self.dialogue_user = ''

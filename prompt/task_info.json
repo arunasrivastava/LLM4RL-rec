@@ -1,6 +1,6 @@
 {
     "simpledoorkey": {
-        "episode": 10,
+        "episode": 100,
         "level": "easy",
         "description": "an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and statu. carry {object} or none. Availabel actions may includes: explore, go to {object), pick up {object}, toggle {object}. The actions should be displayed in a list. Please must must keep the format with {} and do not explain the reasoning. if observation nothing then just write 'A: action{explore}' else respond with A: action{<your action goes here>}\n",
         "example":"###Q: observation:{observed nothing}. \n A: action:{explore} \n Q: observation: {observed a key, observed a door}.\n A: action: {go to the key, pick up the key, go to the door, toggle the door}.###",
