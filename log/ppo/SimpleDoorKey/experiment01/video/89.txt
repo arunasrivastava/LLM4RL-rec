@@ -1,0 +1,108 @@
+step:0
+"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.
+        Example:
+        Q: observation: {observed a key, observed a door}.
+        A: action: {go to the key, pick up the key, go to the door, toggle the door}.""" Q: observation: "" {observed nothing} 
+A: action: {explore}
+step:20
+"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.
+        Example:
+        Q: observation: {observed a key, observed a door}.
+        A: action: {go to the key, pick up the key, go to the door, toggle the door}.""" Q: observation: "" {observed a key} 
+A: action: {go to the key, pick up the key}
+step:22
+"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.
+        Example:
+        Q: observation: {observed a key, observed a door}.
+        A: action: {go to the key, pick up the key, go to the door, toggle the door}.""" Q: observation: "" {observed a key} 
+A: action: {go to the key, pick up the key}
+step:24
+"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.
+        Example:
+        Q: observation: {observed a key, observed a door}.
+        A: action: {go to the key, pick up the key, go to the door, toggle the door}.""" Q: observation: "" {observed a key} 
+A: action: {pick up the key}
+step:25
+"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.
+        Example:
+        Q: observation: {observed a key, observed a door}.
+        A: action: {go to the key, pick up the key, go to the door, toggle the door}.""" Q: observation: "" {observed a key} 
+A: action: {pick up the key}
+step:26
+"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.
+        Example:
+        Q: observation: {observed a key, observed a door}.
+        A: action: {go to the key, pick up the key, go to the door, toggle the door}.""" Q: observation: "" {observed a key} 
+A: action: {go to the key, pick up the key, explore}
+step:33
+"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.
+        Example:
+        Q: observation: {observed a key, observed a door}.
+        A: action: {go to the key, pick up the key, go to the door, toggle the door}.""" Q: observation: "" {observed nothing, carry key} 
+A: action: {explore}
+step:34
+"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.
+        Example:
+        Q: observation: {observed a key, observed a door}.
+        A: action: {go to the key, pick up the key, go to the door, toggle the door}.""" Q: observation: "" {observed nothing, carry key} 
+A: action: {explore, toggle the door}
+step:57
+"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.
+        Example:
+        Q: observation: {observed a key, observed a door}.
+        A: action: {go to the key, pick up the key, go to the door, toggle the door}.""" Q: observation: "" {observed nothing, carry key} 
+A: action: {explore, go to door, toggle door}
+step:58
+"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.
+        Example:
+        Q: observation: {observed a key, observed a door}.
+        A: action: {go to the key, pick up the key, go to the door, toggle the door}.""" Q: observation: "" {observed nothing, carry key} 
+A: action: {explore, toggle the door}
+step:64
+"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.
+        Example:
+        Q: observation: {observed a key, observed a door}.
+        A: action: {go to the key, pick up the key, go to the door, toggle the door}.""" Q: observation: "" {observed nothing, carry key} 
+A: action: {explore, go to key}
+step:65
+"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.
+        Example:
+        Q: observation: {observed a key, observed a door}.
+        A: action: {go to the key, pick up the key, go to the door, toggle the door}.""" Q: observation: "" {observed nothing, carry key} 
+A: action: {explore, toggle the door}
+step:66
+"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.
+        Example:
+        Q: observation: {observed a key, observed a door}.
+        A: action: {go to the key, pick up the key, go to the door, toggle the door}.""" Q: observation: "" {observed nothing, carry key} 
+A: action: {explore, toggle the door}
+step:67
+"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.
+        Example:
+        Q: observation: {observed a key, observed a door}.
+        A: action: {go to the key, pick up the key, go to the door, toggle the door}.""" Q: observation: "" {observed a door, carry key} 
+A: action: {go to the door, toggle the door}
+step:68
+"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.
+        Example:
+        Q: observation: {observed a key, observed a door}.
+        A: action: {go to the key, pick up the key, go to the door, toggle the door}.""" Q: observation: "" {observed a door, carry key} 
+A: action: {go to the door, toggle the door}
+step:69
+"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.
+        Example:
+        Q: observation: {observed a key, observed a door}.
+        A: action: {go to the key, pick up the key, go to the door, toggle the door}.""" Q: observation: "" {observed a door, carry key} 
+A: action: {toggle the door}
+step:70
+"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.
+        Example:
+        Q: observation: {observed a key, observed a door}.
+        A: action: {go to the key, pick up the key, go to the door, toggle the door}.""" Q: observation: "" {observed a door, carry key} 
+A: action: {toggle the door}
+step:71
+"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please keep the format with {} and do not explain the reasoning.
+        Example:
+        Q: observation: {observed a key, observed a door}.
+        A: action: {go to the key, pick up the key, go to the door, toggle the door}.""" Q: observation: "" {observed a door, carry key} 
+A: action: {explore, go to the door, toggle the door}

@@ -19,6 +19,11 @@ from utils import global_param
 from abc import ABC, abstractmethod
 
 # python3 main.py train --task SimpleDoorKey --save_name experiment01 
+# python3 main.py eval --task ColoredDoorKey --save_name experiment05
+
+# python3 main.py train_RL --task ColoredDoorKey --save_name experiment01 
+# python3 main.py eval_RL --task SimpleDoorKey --save_name RL
+# python3 main.py baseline --task ColoredDoorKey--save_name baseline
 # Set your OpenAI API key
 openai.api_key = ''  # TODO: Replace with your actual OpenAI API key
 
@@ -170,11 +175,11 @@ class KeyInBox_Planner(Base_Planner):
         super().__init__()
         self.mediator = KeyInBox_Mediator()
         if seed %2 == 0:
-            self.llm_model = "vicuna-7b-4"
-            self.llm_url = 'http://10.109.116.3:8004/v1/chat/completions'
+            self.llm_model = "gpt-3.5-turbo"
+            self.llm_url = 'https://api.openai.com/v1/chat/completions'
         else:
-            self.llm_model = "vicuna-7b-1"
-            self.llm_url = 'http://10.109.116.3:8001/v1/chat/completions'
+            self.llm_model = "gpt-3.5-turbo"
+            self.llm_url = 'https://api.openai.com/v1/chat/completions'
 
     def __call__(self, input):
         return self.forward(input)
@@ -243,11 +248,11 @@ class ColoredDoorKey_Planner(Base_Planner):
         super().__init__()
         self.mediator = ColoredDoorKey_Mediator()
         if seed %2 == 0:
-            self.llm_model = "vicuna-7b-7"
-            self.llm_url = 'http://10.109.116.3:5678/v1/chat/completions'
+            self.llm_model = "gpt-3.5-turbo"
+            self.llm_url = 'https://api.openai.com/v1/chat/completions'
         else:
-            self.llm_model = "vicuna-7b-6"
-            self.llm_url = 'http://10.109.116.3:8006/v1/chat/completions'
+            self.llm_model = "gpt-3.5-turbo"
+            self.llm_url = 'https://api.openai.com/v1/chat/completions'
 
 
     def __call__(self, input):

@@ -24,12 +24,13 @@
     },
 
 
-    "coloreddoorkey":{
+    "coloreddoorkey": {
         "episode": 100,
         "level": "hard",
-        "description": "An agent in a Minigrid environment in reinfrocement learning, the task of the agent is to toggle the color door with same color key. Format answer as following way:\n\n" ,
-        "example":  "Q: [observed <color1> key, observed <color2> key, observed <color1> door]\nA: [observed <color1> key, observed <color2> key, observed <color1> door][observed <color1> key, observed <color1> door]{go to <color1> key, pick up <color1> key}\n\nQ: [observed <color1> key, observed <color1> door, carry <color2> key]\nA: [observed <color1> key, observed <color1> door, carry <color2> key][observed <color1> key, observed <color1> door]{go to <color1> key, pick up <color1> key}\n\nQ: [observed <color2> key, observed <color1> door, carry <color1> key]\nA: [observed <color2> key, observed <color1> door, carry <color1> key][observed <color1> door, carry <color1> key]{go to <color1> door, toggle <color1> door}\n\nQ: [observed <color1> door]\nA:[observed <color1> door]{explore}\n\nQ: [observed <color1> key, observed <color2> key]\nA: [observed <color1> key]{go to <color1> key, pick up <color1> key}[observed <color2> key, carry <color1> key]{explore}\n\nQ: [observed <color1> door, carry <color1> key]\nA: [observed <color1> door, carry <color1> key]{go to <color1> door, toggle <color1> door}\n\nQ: [observed <color1> key, observed <color1> door]\nA: [observed <color1> key, observed <color1> door]{go to <color1> key, pick up <color1> key}[observed <color1> door, carry <color1> key]{go to <color1> door, toggle <color1> door}\n\nQ: [observed <color1> door, carry <color2> key]\nA:[observed <color1> door, carry <color2> key]{explore}\n\nQ: [observed <color2> key, observed <color1> door]\nA: [observed <color2> key, observed <color1> door]{go to <color2> key, pick up <color2> key}[observed <color1> door, carry <color2> key]{explore}\n\nQ: [observed nothing]\nA: [observed nothing]{explore}\n",
+        "description": "### An agent in a Minigrid environment in reinforcement learning, the task of the agent is to toggle the color door with the same color key. Please help the agent plan the next action given the agent's current observations and status. Carry {object} or none. Available actions may include: explore, go to {object}, pick up {object}, toggle {object}. The actions should be displayed in a list. Please must keep the format with {} and do not explain the reasoning. If observation nothing then just write 'A: action{explore}' else respond with A: action{<your action goes here>}.###",
+        "example": "### Q: observation:{observed <color1> key, observed <color2> key, observed <color1> door}\nA: action:{go to <color1> key, pick up <color1> key, go to <color1> door, toggle <color1> door}\n nQ: observation:{observed <color2> key, observed <color1> door}\nA: action:{go to <color2> key, pick up <color2> key, explore} \n Q: observation:{observed nothing}\nA: action:{explore} ###",
         "configurations": "MiniGrid-ColoredDoorKey-Min5-Max10-View3"
     }
+    
 
 }

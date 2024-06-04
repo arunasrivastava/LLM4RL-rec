@@ -7,6 +7,15 @@ import numpy as np
 # memory_gpu = [int(x.split()[2]) for x in open('tmp.txt', 'r').readlines()]
 # os.environ["CUDA_VISIBLE_DEVICES"] = str(np.argmax(memory_gpu)) 
 # os.system('rm tmp.txt')
+import tensorflow as tf
+gpus = tf.config.experimental.list_physical_devices('GPU')
+if gpus:
+  # Restrict TensorFlow to only use the first GPU
+  try:
+    tf.config.experimental.set_visible_devices(gpus[0], 'GPU')
+  except RuntimeError as e:
+    # Visible devices must be set at program startup
+    print(e)
 
 import torch
 import utils

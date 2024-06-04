@@ -182,7 +182,7 @@ class SimpleDoorKey_Mediator(Base_Mediator):
             context += f"carry {carry_object}"
         
 
-        context = f"""\"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. carry {{object}} or none. Available actions may include: explore, go to {{object}}, pick up {{object}}, toggle {{object}}. The actions should be displayed in a list. Please keep the format with {{}} and do not explain the reasoning.
+        context = f"""\"""an agent in a minigrid environment in reinforcement learning, the task of the agent is toggle the door in the maze with key. please help agent to plan the next action given agent's current observations and status. Must go to observed object before picking up. carry {{object}} or none. Available actions may include: explore, go to {{object}}, pick up {{object}}, toggle {{object}}. The actions should be displayed in a list. Please keep the format with {{}} and do not explain the reasoning. 
         Example:
         Q: observation: {{observed a key, observed a door}}.
         A: action: {{go to the key, pick up the key, go to the door, toggle the door}}.\""" Q: observation: \"\" {{{context}}} """
@@ -218,7 +218,9 @@ class SimpleDoorKey_Mediator(Base_Mediator):
                 coordinate = None
         except:
             print("Unknown Planning :", text)
+            coordinate = None
             act = 6 # do nothing
+          
         return act, obj, coordinate
     
     
@@ -506,7 +508,10 @@ class ColoredDoorKey_Mediator(Base_Mediator):
                 context += ", "
             context += f"carry {carry_object}"
         #context = f"observation:{{{context}}},"
-        context = f"Q: [{context}]"
+        
+        context = f"""\"""An agent in a Minigrid environment in reinforcement learning, the task of the agent is to toggle the color door with the same color key. Please help the agent plan the next action given the agent's current observations and status. Carry {{object}} or none. Available actions may include: explore, go to {{object}}, pick up {{object}}, toggle {{object}}. The actions should be displayed in a list. Please must keep the format with {{}} and do not explain the reasoning. If observation nothing then just write 'A: action{{explore}}' else respond with A: action{{<your action goes here>}}. 
+        Example:
+        Q: observation:{{observed <color1> key, observed <color2> key, observed <color1> door}}\nA: action:{{go to <color1> key, pick up <color1> key, go to <color1> door, toggle <color1> door}}\n\nQ: observation:{{observed <color1> key, observed <color1> door, carry <color2> key}}\nA: action:{{go to <color1> key, pick up <color1> key}}\n\nQ: observation:{{observed <color2> key, observed <color1> door, carry <color1> key}}\nA: action:{{go to <color1> door, toggle <color1> door}}\n\nQ: observation:{{observed <color1> door}}\nA: action:{{explore}}\n\nQ: observation:{{observed <color1> key, observed <color2> key}}\nA: action:{{go to <color1> key, pick up <color1> key, explore}}\n\nQ: observation:{{observed <color1> door, carry <color1> key}}\nA: action:{{go to <color1> door, toggle <color1> door}}\n \"\" Q: observation: \"\"  {{{context}}} """
         return context
     
     def parser(self, text):

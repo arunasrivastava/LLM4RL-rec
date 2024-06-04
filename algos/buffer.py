@@ -13,7 +13,7 @@ from torch.nn.utils.rnn import pad_sequence
 import torch
 
 
-def Merge_Buffers(buffers, device='cpu'):
+def Merge_Buffers(buffers, device='gpu'):
     merged = Buffer(device=device)
     for buf in buffers:
         offset = len(merged)

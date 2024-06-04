@@ -43,7 +43,8 @@ class Game_RL(Game):
 
         self.ppo_algo = algos.PPO(self.RL_net, device=self.device, save_path=self.logger.dir, batch_size=self.batch_size)
 
-        self.mediator = SimpleDoorKey_Mediator(self.ideal)
+        # Initialize the mediator attribute
+        self.mediator = SimpleDoorKey_Mediator()
 
 
     def flag2skill(self,obs, skill_flag):
@@ -58,19 +59,23 @@ class Game_RL(Game):
             agent_pos = np.argwhere(agent_map != 4)[0]
             if 'key' not in self.mediator.obj_coordinate.keys() or obs[:,:,0][agent_pos[0],agent_pos[1]] == 5:
                 goal["action"] = None
+                goal["coordinate"] = None  # Set coordinate to None
             else:
                 goal["action"] = SKILL_TO_IDX["go to object"]
                 goal["coordinate"] = self.mediator.obj_coordinate["key"]
         elif skill_flag == 2:
             if 'door' not in self.mediator.obj_coordinate.keys():
                 goal["action"] = None
+                goal["coordinate"] = None  # Set coordinate to None
             else:
                 goal["action"] = SKILL_TO_IDX["go to object"]
                 goal["coordinate"] = self.mediator.obj_coordinate["door"]
         elif skill_flag == 3:
             goal["action"] = SKILL_TO_IDX["pickup"]
+            goal["coordinate"] = None  # Set coordinate to None
         elif skill_flag == 4:
             goal["action"] = SKILL_TO_IDX["toggle"]
+            goal["coordinate"] = None  # Set coordinate to None
         return [goal]
 
     def collect(self, env_fn, seed=None):
